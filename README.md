@@ -1,1 +1,83 @@
 # Vehicle
+## Business Understanding
+The dataset contains information on 426K cars. From a business perspective, we are tasked to
+develope a predictive model to predict pricing of used cars based on various features, such as make, model, year mileage, condition, location, among others. 
+
+
+## Data Understanding
+
+
+A Large cloud provider
+
+## Data Understanding
+<pre>
+Data Types and Missing Values:
+RangeIndex: 426880 entries, 0 to 426879
+Data columns (total 18 columns):
+ #   Column        Non-Null Count   Dtype  
+---  ------        --------------   -----  
+ 0   id            426880 non-null  int64  
+ 1   region        426880 non-null  object 
+ 2   price         426880 non-null  int64  
+ 3   year          425675 non-null  float64
+ 4   manufacturer  409234 non-null  object 
+ 5   model         421603 non-null  object 
+ 6   condition     252776 non-null  object 
+ 7   cylinders     249202 non-null  object 
+ 8   fuel          423867 non-null  object 
+ 9   odometer      422480 non-null  float64
+ 10  title_status  418638 non-null  object 
+ 11  transmission  424324 non-null  object 
+ 12  VIN           265838 non-null  object 
+ 13  drive         296313 non-null  object 
+ 14  size          120519 non-null  object 
+ 15  type          334022 non-null  object 
+ 16  paint_color   296677 non-null  object 
+ 17  state         426880 non-null  object 
+dtypes: float64(2), int64(2), object(14)
+memory usage: 58.6+ MB
+None
+</pre>
+
+## Data Preparation
+<pre>
+Ranked Numerical Features by Correlation Strength:
+odometer    0.414961
+year        0.240999
+Name: price, dtype: float64
+
+Ranked Categorical Features by ANOVA p-value:
+region: F-Statistic = 17.11, p-value = 0.00
+model: F-Statistic = 8.37, p-value = 0.00
+condition: F-Statistic = 1305.45, p-value = 0.00
+cylinders: F-Statistic = 1198.19, p-value = 0.00
+fuel: F-Statistic = 2747.30, p-value = 0.00
+drive: F-Statistic = 5651.68, p-value = 0.00
+size: F-Statistic = 1999.38, p-value = 0.00
+type: F-Statistic = 1719.88, p-value = 0.00
+paint_color: F-Statistic = 304.11, p-value = 0.00
+state: F-Statistic = 56.00, p-value = 0.00
+</pre>
+
+## Modeling
+First model - using only the two numerical features to build a linear regression model
+Model Evaluation Metrics:
+Mean Squared Error: 98024874.99423555
+R^2 Score: 0.21155398282392646
+
+Second model - using all above ranked numerical features and categorical features to build a linear regression model
+Model Evaluation Metrics:
+Mean Squared Error (MSE): 17041510.93282232
+R-Squared (R2): 0.8629295735145145
+
+Third Model - using all above ranked numerical features and categorical features to build a random forest regressor model 
+Model Evaluation Metrics:
+Mean Squared Error (MSE): 17041510.93282232
+R-Squared (R2): 0.8629295735145145
+
+Grid Search - using all above ranked numerical features and categorical features to build a random forest regressor model 
+Model Evaluation Metrics:
+Mean Squared Error: 20940511.22238466
+R^2 Score: 0.8315686434500327
+
+The second model notably surpasses the first one, while the third model surpasses the second one. The grid search model is decent, but it doesn't match up to the third model.
