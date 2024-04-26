@@ -1,0 +1,239 @@
+<html>
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=windows-1252">
+<meta name=Generator content="Microsoft Word 15 (filtered)">
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:"Cambria Math";
+	panose-1:2 4 5 3 5 4 6 3 2 4;}
+@font-face
+	{font-family:Aptos;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin-top:0in;
+	margin-right:0in;
+	margin-bottom:8.0pt;
+	margin-left:0in;
+	line-height:115%;
+	font-size:12.0pt;
+	font-family:"Aptos",sans-serif;}
+.MsoChpDefault
+	{font-size:12.0pt;}
+.MsoPapDefault
+	{margin-bottom:8.0pt;
+	line-height:115%;}
+@page WordSection1
+	{size:8.5in 11.0in;
+	margin:1.0in 1.0in 1.0in 1.0in;}
+div.WordSection1
+	{page:WordSection1;}
+-->
+</style>
+
+</head>
+
+<body lang=EN-US style='word-wrap:break-word'>
+
+<div class=WordSection1>
+
+<p class=MsoNormal style='margin-bottom:0in'><b>Business Understanding</b></p>
+
+<p class=MsoNormal style='margin-bottom:0in'>The dataset contains information
+on 426K cars. From a business perspective, we are tasked to develop a
+predictive model to predict pricing of used cars based on various features,
+such as make, model, year mileage, condition, location, among others. </p>
+
+<p class=MsoNormal style='margin-bottom:0in'>&nbsp;</p>
+
+<p class=MsoNormal style='margin-bottom:0in'><b>Data Understanding</b></p>
+
+<p class=MsoNormal style='margin-bottom:0in'>Data Types and Missing Values:</p>
+
+<p class=MsoNormal style='margin-bottom:0in'>RangeIndex: 426880 entries, 0 to
+426879</p>
+
+<p class=MsoNormal style='margin-bottom:0in'>Data columns (total 18 columns):</p>
+
+<p class=MsoNormal style='margin-bottom:0in'> #   Column        Non-Null
+Count   Dtype  </p>
+
+<p class=MsoNormal style='margin-bottom:0in'>---  ------       
+--------------   -----  </p>
+
+<p class=MsoNormal style='margin-bottom:0in'> 0   id            426880
+non-null  int64  </p>
+
+<p class=MsoNormal style='margin-bottom:0in'> 1   region        426880
+non-null  object </p>
+
+<p class=MsoNormal style='margin-bottom:0in'> 2   price         426880
+non-null  int64  </p>
+
+<p class=MsoNormal style='margin-bottom:0in'> 3   year          425675
+non-null  float64</p>
+
+<p class=MsoNormal style='margin-bottom:0in'> 4   manufacturer  409234
+non-null  object </p>
+
+<p class=MsoNormal style='margin-bottom:0in'> 5   model         421603
+non-null  object </p>
+
+<p class=MsoNormal style='margin-bottom:0in'> 6   condition     252776
+non-null  object </p>
+
+<p class=MsoNormal style='margin-bottom:0in'> 7   cylinders     249202
+non-null  object </p>
+
+<p class=MsoNormal style='margin-bottom:0in'> 8   fuel          423867
+non-null  object </p>
+
+<p class=MsoNormal style='margin-bottom:0in'> 9   odometer      422480
+non-null  float64</p>
+
+<p class=MsoNormal style='margin-bottom:0in'> 10  title_status  418638
+non-null  object </p>
+
+<p class=MsoNormal style='margin-bottom:0in'> 11  transmission  424324
+non-null  object </p>
+
+<p class=MsoNormal style='margin-bottom:0in'> 12  VIN           265838
+non-null  object </p>
+
+<p class=MsoNormal style='margin-bottom:0in'> 13  drive         296313
+non-null  object </p>
+
+<p class=MsoNormal style='margin-bottom:0in'> 14  size          120519
+non-null  object </p>
+
+<p class=MsoNormal style='margin-bottom:0in'> 15  type          334022
+non-null  object </p>
+
+<p class=MsoNormal style='margin-bottom:0in'> 16  paint_color   296677
+non-null  object </p>
+
+<p class=MsoNormal style='margin-bottom:0in'> 17  state         426880
+non-null  object </p>
+
+<p class=MsoNormal style='margin-bottom:0in'>dtypes: float64(2), int64(2),
+object(14)</p>
+
+<p class=MsoNormal style='margin-bottom:0in'>memory usage: 58.6+ MB</p>
+
+<p class=MsoNormal style='margin-bottom:0in'>None</p>
+
+<p class=MsoNormal style='margin-bottom:0in'>&nbsp;</p>
+
+<p class=MsoNormal style='margin-bottom:0in'><b>Data Preparation</b></p>
+
+<p class=MsoNormal style='margin-bottom:0in'>Ranked Numerical Features by Correlation
+Strength:</p>
+
+<p class=MsoNormal style='margin-bottom:0in'>odometer    0.414961</p>
+
+<p class=MsoNormal style='margin-bottom:0in'>year        0.240999</p>
+
+<p class=MsoNormal style='margin-bottom:0in'>Name: price, dtype: float64</p>
+
+<p class=MsoNormal style='margin-bottom:0in'>&nbsp;</p>
+
+<p class=MsoNormal style='margin-bottom:0in'>Ranked Categorical Features by
+ANOVA p-value:</p>
+
+<p class=MsoNormal style='margin-bottom:0in'>region: F-Statistic = 17.11,
+p-value = 0.00</p>
+
+<p class=MsoNormal style='margin-bottom:0in'>model: F-Statistic = 8.37, p-value
+= 0.00</p>
+
+<p class=MsoNormal style='margin-bottom:0in'>condition: F-Statistic = 1305.45,
+p-value = 0.00</p>
+
+<p class=MsoNormal style='margin-bottom:0in'>cylinders: F-Statistic = 1198.19,
+p-value = 0.00</p>
+
+<p class=MsoNormal style='margin-bottom:0in'>fuel: F-Statistic = 2747.30,
+p-value = 0.00</p>
+
+<p class=MsoNormal style='margin-bottom:0in'>drive: F-Statistic = 5651.68,
+p-value = 0.00</p>
+
+<p class=MsoNormal style='margin-bottom:0in'>size: F-Statistic = 1999.38,
+p-value = 0.00</p>
+
+<p class=MsoNormal style='margin-bottom:0in'>type: F-Statistic = 1719.88,
+p-value = 0.00</p>
+
+<p class=MsoNormal style='margin-bottom:0in'>paint_color: F-Statistic = 304.11,
+p-value = 0.00</p>
+
+<p class=MsoNormal style='margin-bottom:0in'>state: F-Statistic = 56.00,
+p-value = 0.00</p>
+
+<p class=MsoNormal style='margin-bottom:0in'>&nbsp;</p>
+
+<p class=MsoNormal style='margin-bottom:0in'><b>Modeling and Evaluation</b></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><u>First model - using only the
+two numerical features to build a linear regression model</u></p>
+
+<p class=MsoNormal style='margin-bottom:0in'>Model Evaluation Metrics:</p>
+
+<p class=MsoNormal style='margin-bottom:0in'>Mean Squared Error:
+98024874.99423555</p>
+
+<p class=MsoNormal style='margin-bottom:0in'>R^2 Score: 0.21155398282392646</p>
+
+<p class=MsoNormal style='margin-bottom:0in'>&nbsp;</p>
+
+<p class=MsoNormal style='margin-bottom:0in'><u>Second model - using all above
+ranked numerical features and categorical features to build </u>a linear
+regression model</p>
+
+<p class=MsoNormal style='margin-bottom:0in'>Model Evaluation Metrics:</p>
+
+<p class=MsoNormal style='margin-bottom:0in'>Mean Squared Error:
+54988865.67994486</p>
+
+<p class=MsoNormal style='margin-bottom:0in'>R^2 Score: 0.5577066317408497</p>
+
+<p class=MsoNormal style='margin-bottom:0in'>&nbsp;</p>
+
+<p class=MsoNormal style='margin-bottom:0in'><u>Third Model - using all above
+ranked numerical features and categorical features to build a random forest
+regressor model </u></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><u>Model Evaluation Metrics:</u></p>
+
+<p class=MsoNormal style='margin-bottom:0in'>Mean Squared Error (MSE):
+17043005.390291158</p>
+
+<p class=MsoNormal style='margin-bottom:0in'>R-Squared (R2): 0.8629175531060292</p>
+
+<p class=MsoNormal style='margin-bottom:0in'>&nbsp;</p>
+
+<p class=MsoNormal style='margin-bottom:0in'><u>Grid Search - using all above
+ranked numerical features and categorical features to build a random forest
+regressor model </u></p>
+
+<p class=MsoNormal style='margin-bottom:0in'>Model Evaluation Metrics:</p>
+
+<p class=MsoNormal style='margin-bottom:0in'>Mean Squared Error:
+17039247.069625437</p>
+
+<p class=MsoNormal style='margin-bottom:0in'>R^2 Score: 0.8629477825040298</p>
+
+<p class=MsoNormal style='margin-bottom:0in'>&nbsp;</p>
+
+<p class=MsoNormal style='margin-bottom:0in'>The second model surpasses the
+first model significantly, and the third model surpasses the second one
+significantly. The grid search model closely resembles the third model with a
+slight improvement.</p>
+
+</div>
+
+</body>
+
+</html>
